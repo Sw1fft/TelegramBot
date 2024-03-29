@@ -7,20 +7,25 @@ namespace AutoFactBot.Data.Repositories
     {
         public static long UserId { get; set; } = 0;
 
-        private readonly string path = @"D:\AppDocumentsData\AutoFactBot\Users\";
+        private readonly string path = @$"D:\AppDocumentsData\AutoFactBot\Users\{UserId}";
 
-        public Task<List<DocumentModel>> GetAllDocuments()
+        public async Task<List<DocumentModel>> GetAllDocuments()
         {
+            var documents = Directory.GetFiles(path);
+
+            foreach (var document in documents)
+            {
+                
+            }
+
             throw new NotImplementedException();
         }
 
         public async Task<Guid> CreateDocument(DocumentModel document)
         {
-            CheckUserDirectory();
 
-            //using var pdfDocument = new Document(new PdfDocument(new PdfWriter($"{document.Title}.pdf")));
 
-            throw new NotImplementedException();
+            return document.Id;
         }
 
         public Task<Guid> UpdateDocument(Guid id, string title, string description)
@@ -35,10 +40,8 @@ namespace AutoFactBot.Data.Repositories
 
         private void CheckUserDirectory()
         {
-            string userPath = path + $"{UserId}";
-
-            if (!File.Exists(userPath))
-                Directory.CreateDirectory(userPath);
+            if (!File.Exists(path))
+                Directory.CreateDirectory(path);
         }
     }
 }
