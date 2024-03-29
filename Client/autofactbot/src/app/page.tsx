@@ -1,9 +1,9 @@
 'use client'
-import { Content, Footer, Header } from "antd/es/layout/layout";
 import { GetAllDocuments } from "@/Services/DocumentsService";
+import { MenuOutlined } from "@ant-design/icons";
 import { Create } from "@/Components/Create";
 import { useEffect, useState } from "react";
-import { Image, Layout, Menu } from "antd";
+import { Dropdown, MenuProps } from "antd";
 import { Draft } from "@/Components/Draft";
 
 export default function Home() {
@@ -18,7 +18,7 @@ export default function Home() {
     };
 
     getBooks();
-}, []);
+  }, []);
 
   const CreateDocument = async() => {
     setIsCreateAction(true);
@@ -28,31 +28,37 @@ export default function Home() {
     setIsCreateAction(false);
   }
 
-  const menuItems = [
-    {key: 1, label: <nav onClick={CreateDocument}>Создать документ</nav>},
-    {key: 2, label: <nav onClick={DraftDocument}>Черновики</nav>}
+  const items: MenuProps['items'] = [
+    {key: '1', label: (<div onClick={CreateDocument}>Создать документ</div>)},
+    {key: 'draft', label: <div onClick={DraftDocument}>Черновики</div>},
   ]
 
   return (
-    <main className="min-h-screen p-1">
-      <Layout>
-        <Header className="flex items-center justify-between">
-          <div className="flex bg-white p-1">
-            <Image src="/next.svg" width={100} alt="logo"/>
+    <main>
+      <div className="p-1">
+        <header className="p-1 rounded-md" style={{backgroundColor: 'rgb(3,105,161)'}}>
+          <div className="flex justify-between items-center sm:px-10">
+            <div>
+              <img src="/logo.png" alt="logo" width={200}/>
+            </div>
+            <div>
+              <Dropdown menu={{items}} className="flex size-10 items-center justify-center">
+                <MenuOutlined style={{width: '64px'}}/>
+              </Dropdown>
+            </div>
           </div>
-          <Menu items={menuItems} mode="horizontal" theme="dark"/>
-        </Header>
-        <Content>
+        </header>
+        <div className="min-h-screen pt-2">
           {
             isCreateAction ? (<Create />) : (<Draft documents={documents} />)
           }
-        </Content>
-        <Footer className="text-center">
+        </div>
+        <footer className="text-center">
           Ant Design ©{new Date().getFullYear()}
           <br />
           Created by Vadim Bogdanov
-        </Footer>
-      </Layout>
+        </footer>
+      </div>
     </main>
   );
 }
