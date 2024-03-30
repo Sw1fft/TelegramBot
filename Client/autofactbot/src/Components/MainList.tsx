@@ -6,7 +6,7 @@ const ownerOptions = [
     {label: 'Требуется химчистка', value: 'Требуется химчистка'}
 ]
 
-const mainData = [
+export const mainData = [
     {title: 'Марка, модель:', children: <Input />},
     {title: 'VIN:', children: <Input />},
     {title: '№ двигателя:', children: <Input />},

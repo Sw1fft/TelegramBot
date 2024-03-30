@@ -4,6 +4,7 @@ import { WheelsList } from "./WheelsList"
 import { GlassList } from "./GlassList"
 import { MainList } from "./MainList"
 import { BodyList } from "./BodyList"
+import { CreateDocument } from "@/Services/DocumentsService"
 
 const items = [
     { key: 1, label: 'Основное', children: <MainList /> },
@@ -19,7 +20,22 @@ const items = [
     { key: 11, label: 'Рекомендации специалиста', children: '' },
   ]
 
-export const Create = () => {
+export const Create = async() => {
+    const defaultValues = {
+        title: "",
+        model: "",
+        vin: "",
+        engineNumber: "",
+        mileage: "",
+        owner: "",
+        countOwners: "",
+        year: "",
+        gear: "",
+        color: "",
+        countKeys: "",
+        interior: ""
+    };
+
     return (
         <Form>
             <Collapse items={items}/>
