@@ -7,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 var config = builder.Configuration.GetRequiredSection("Token");
 
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 builder.Services.AddHttpClient("telegram_bot_client")
                 .AddTypedClient<ITelegramBotClient>((httpClient, sp) =>
                 {
@@ -14,14 +17,12 @@ builder.Services.AddHttpClient("telegram_bot_client")
                     return new TelegramBotClient(options, httpClient);
                 });
 
-builder.Services.AddControllers().AddNewtonsoftJson();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
 builder.Services.AddHostedService<WebhooksService>();
 builder.Services.AddScoped<IBotsService, BotsService>();
 builder.Services.AddScoped<IDocumentsService, DocumentsService>();
 builder.Services.AddScoped<IDocumentsRepository, DocumentsRepository>();
+
+builder.Services.AddControllers().AddNewtonsoftJson();
 
 var app = builder.Build();
 

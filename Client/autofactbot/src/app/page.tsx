@@ -1,36 +1,24 @@
-'use client'
-import { GetAllDocuments } from "@/Services/DocumentsService";
+"use client"
+import CreateDocumentPage from "./CreateDocumentPage/page";
 import { MenuOutlined } from "@ant-design/icons";
-import { Create } from "@/Components/Create";
-import { useEffect, useState } from "react";
 import { Dropdown, MenuProps } from "antd";
-import { Draft } from "@/Components/Draft";
+import DraftPage from "./DraftPage/page";
+import { useState } from "react";
 
 export default function Home() {
-  const [isCreateAction, setIsCreateAction] = useState(false);
-  const [documents, setDocuments] = useState<Document[]>([]);
-
-  useEffect(() => {
-    const getBooks = async () => {
-        const books = await GetAllDocuments();
-        setIsCreateAction(true);
-        setDocuments(documents);
-    };
-
-    getBooks();
-  }, []);
-
-  const CreateDocument = async() => {
-    setIsCreateAction(true);
+  const [isPage, setIsPage] = useState(false);
+  
+  const openDraftsPage = () => {
+    setIsPage(true);
   }
 
-  const DraftDocument = async() => {
-    setIsCreateAction(false);
+  const closeDraftsPage = () => {
+    setIsPage(false);
   }
 
   const items: MenuProps['items'] = [
-    {key: '1', label: (<div onClick={CreateDocument}>Создать документ</div>)},
-    {key: 'draft', label: <div onClick={DraftDocument}>Черновики</div>},
+    {key: 'create_page', label: <div onClick={closeDraftsPage}>Создать документ</div>},
+    {key: 'drafts_page', label: <div onClick={openDraftsPage}>Черновики</div>},
   ]
 
   return (
@@ -49,9 +37,7 @@ export default function Home() {
           </div>
         </header>
         <div className="min-h-screen pt-2">
-          {
-            isCreateAction ? (<Create />) : (<Draft documents={documents} />)
-          }
+          {isPage ? <DraftPage /> : <CreateDocumentPage />}
         </div>
         <footer className="text-center">
           Ant Design ©{new Date().getFullYear()}

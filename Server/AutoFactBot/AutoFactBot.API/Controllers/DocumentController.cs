@@ -21,14 +21,40 @@ namespace AutoFactBot.API.Controllers
         {
             var documents = await _documentsService.GetAllDocuments();
 
-            var response = documents.Select(b => new Response(b.Id, b.Title, b.Description));
+            var response = documents.Select(b => new Response(
+                b.Id, 
+                b.Title,
+                b.CarModel,
+                b.Vin,
+                b.EngineNumber,
+                b.Mileage,
+                b.Owner,
+                b.CountOwners,
+                b.Year,
+                b.GearBox,
+                b.Color,
+                b.CountKeys,
+                b.Interior));
             return Ok(response);
         }
 
         [HttpPost]
         public async Task<ActionResult<Guid>> CreateDocument([FromBody] Request request)
         {
-            var (document, error) = DocumentModel.Create(Guid.NewGuid(), request.Title, request.Description);
+            var (document, error) = DocumentModel.Create(
+                Guid.NewGuid(), 
+                request.Title, 
+                request.CarModel,
+                request.Vin,
+                request.EngineNumber,
+                request.Mileage,
+                request.Owner,
+                request.CountOwners,
+                request.Year,
+                request.GearBox,
+                request.Color,
+                request.CountKeys,
+                request.Interior);
 
             if (!string.IsNullOrEmpty(error))
                 return BadRequest(error);
@@ -40,7 +66,7 @@ namespace AutoFactBot.API.Controllers
         [HttpPut("{id:guid}")]
         public async Task<ActionResult<Guid>> UpdateDocument(Guid id, [FromBody] Request request)
         {
-            var documentId = await _documentsService.UpdateDocument(id, request.Title, request.Description);
+            var documentId = await _documentsService.UpdateDocument(id, request.Title, request.CarModel);
 
             return Ok(documentId);
         }

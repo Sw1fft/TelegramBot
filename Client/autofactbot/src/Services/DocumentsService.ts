@@ -4,7 +4,7 @@ export const GetAllDocuments = async() => {
     return response.json();
 }
 
-export const CreateDocument = async(document: Request) => {
+export const CreateNewDocument = async(document: DocumentRequest) => {
     await fetch("http://localhost:5069/Document", {
         method: "POST",
         headers: {
