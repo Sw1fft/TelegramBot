@@ -17,10 +17,10 @@ builder.Services.AddHttpClient("telegram_bot_client")
                     return new TelegramBotClient(options, httpClient);
                 });
 
-builder.Services.AddHostedService<WebhooksService>();
-builder.Services.AddScoped<IBotsService, BotsService>();
 builder.Services.AddScoped<IDocumentsService, DocumentsService>();
 builder.Services.AddScoped<IDocumentsRepository, DocumentsRepository>();
+builder.Services.AddHostedService<WebhooksService>();
+builder.Services.AddScoped<IBotsService, BotsService>();
 
 builder.Services.AddControllers().AddNewtonsoftJson();
 

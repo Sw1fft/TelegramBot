@@ -1,3 +1,5 @@
+import { DocumentRequest } from "@/Contracts/Request";
+
 export const GetAllDocuments = async() => {
     const response = await fetch("http://localhost:5069/Document");
 

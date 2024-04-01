@@ -1,4 +1,4 @@
-interface DocumentRequest {
+export interface DocumentRequest {
     documentTitle:  string;
     carModel:       string;
     vin:            string;
