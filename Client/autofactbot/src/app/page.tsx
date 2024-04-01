@@ -31,7 +31,7 @@ export default function Home() {
             </div>
             <div>
               <Dropdown menu={{items}} className="flex size-10 items-center justify-center">
-                <MenuOutlined style={{width: '64px'}}/>
+                <MenuOutlined style={{width: '64px'}} />
               </Dropdown>
             </div>
           </div>
@@ -40,9 +40,9 @@ export default function Home() {
           {isPage ? <DraftPage /> : <CreateDocumentPage />}
         </div>
         <footer className="text-center">
-          Ant Design ©{new Date().getFullYear()}
+            Ant Design ©{new Date().getFullYear()}
           <br />
-          Created by Vadim Bogdanov
+            Created by Vadim Bogdanov
         </footer>
       </div>
     </main>

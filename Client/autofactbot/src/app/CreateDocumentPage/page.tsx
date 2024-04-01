@@ -1,5 +1,6 @@
 import { CreateNewDocument } from "@/Services/DocumentsService";
 import { CreateDocument } from "@/Components/CreateDocument";
+import { DocumentRequest } from "@/Contracts/Request";
 import { useState } from "react"
 import { Button } from "antd"
 

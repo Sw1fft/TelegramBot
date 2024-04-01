@@ -1,6 +1,6 @@
 import { DocumentRequest } from "@/Contracts/Request";
-import { Input, Modal, Select } from "antd";
 import { useEffect, useState } from "react";
+import { Input, Modal } from "antd";
 
 interface Props {
     values: Document;
@@ -87,12 +87,13 @@ export const CreateDocument = ({
                 </div>
                 <div>
                     <label>Продавец:</label>
-                    <Select value={owner} options={[
+                    <Input value={owner} onChange={(e) => setOwner(e.target.value)}/>
+                    {/*<Select value={owner} options={[
                         {label: 'Собственник', value:'Собственник'},
                         {label: 'Дилер', value:'Дилер'},
                         {label: 'Посредник', value:'Посредник'},
                         {label: 'Юр. лицо', value:'Юр. лицо'}
-                    ]} onChange={(e) => setOwner(e)}/>
+                    ]} onChange={(e) => setOwner(e)}/>*/}
                 </div>
                 <div>
                     <label>Кол-во владельцев по ПТС:</label>
@@ -116,11 +117,12 @@ export const CreateDocument = ({
                 </div>
                 <div>
                     <label>Состояние салона:</label>
-                    <Select value={interior} options={[
+                    <Input value={interior} onChange={(e) => setInterior(e.target.value)}/>
+                    {/*<Select value={interior} options={[
                         {label: 'Норма', value: 'Норма'},
                         {label: 'Дефекты', value: 'Дефекты'},
                         {label: 'Требуется химчистка', value: 'Требуется химчистка'}
-                    ]} onChange={(e) => setInterior(e)}/>
+                    ]} onChange={(e) => setInterior(e)}/>*/}
                 </div>
             </div>
         </Modal>
