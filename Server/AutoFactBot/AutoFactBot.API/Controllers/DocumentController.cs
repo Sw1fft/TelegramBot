@@ -25,7 +25,7 @@ namespace AutoFactBot.API.Controllers
                 b.Id, 
                 b.Title,
                 b.CarModel,
-                b.Vin,
+                b.VinNumber,
                 b.EngineNumber,
                 b.Mileage,
                 b.Owner,
@@ -35,6 +35,7 @@ namespace AutoFactBot.API.Controllers
                 b.Color,
                 b.CountKeys,
                 b.Interior));
+
             return Ok(response);
         }
 
@@ -43,7 +44,7 @@ namespace AutoFactBot.API.Controllers
         {
             var (document, error) = DocumentModel.Create(
                 Guid.NewGuid(), 
-                request.Title, 
+                request.Title,
                 request.CarModel,
                 request.Vin,
                 request.EngineNumber,

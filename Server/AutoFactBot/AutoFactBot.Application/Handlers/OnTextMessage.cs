@@ -13,9 +13,11 @@ namespace AutoFactBot.Application.Handlers
             _botClient = botClient;
         }
 
+        public static long UserId { get; set; }
+
         public async Task<Message> OnStartCommandHandler(Message message, CancellationToken cancellationToken)
         {
-
+            UserId = message.From!.Id;
 
             InlineKeyboardMarkup inlineKeyboard = new(
                 new[]

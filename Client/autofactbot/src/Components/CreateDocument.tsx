@@ -15,7 +15,7 @@ export const CreateDocument = ({
         createHandle, 
         closeHandle
     }: Props) => {
-    const [documentTitle, setDocumentTitle]     = useState<string>("");
+    const [title, setDocumentTitle]     = useState<string>("");
     const [carModel, setCarModel]               = useState<string>("");
     const [vin, setVin]                         = useState<string>("");
     const [engineNumber, setEngineNumber]       = useState<string>("");
@@ -45,7 +45,7 @@ export const CreateDocument = ({
 
     const handleOnOk = async() => {
         const documentRequest = {
-            documentTitle,
+            title,
             carModel,
             vin,
             engineNumber,
@@ -67,7 +67,7 @@ export const CreateDocument = ({
             <div>
                 <div>
                     <label>Название:</label>
-                    <Input value={documentTitle} onChange={(e) => setDocumentTitle(e.target.value)}/>
+                    <Input value={title} onChange={(e) => setDocumentTitle(e.target.value)}/>
                 </div>
                 <div>
                     <label>Марка, модель:</label>

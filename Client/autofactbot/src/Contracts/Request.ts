@@ -1,5 +1,5 @@
 export interface DocumentRequest {
-    documentTitle:  string;
+    title:          string;
     carModel:       string;
     vin:            string;
     engineNumber:   string;
