@@ -2,6 +2,7 @@
 using AutoFactBot.API.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using AutoFactBot.Core.Models;
+using Telegram.Bot.Types;
 
 namespace AutoFactBot.API.Controllers
 {

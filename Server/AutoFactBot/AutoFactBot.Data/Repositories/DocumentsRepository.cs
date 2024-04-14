@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using AutoFactBot.Data.Entities;
 using AutoFactBot.Data.Context;
 using AutoFactBot.Core.Models;
-using AutoFactBot.Application.Handlers;
 
 namespace AutoFactBot.Data.Repositories
 {
     public class DocumentsRepository : IDocumentsRepository
     {
         private readonly DocumentDbContext _dbContext;
+        private readonly long _userId;
 
         public DocumentsRepository(DocumentDbContext dbContext) 
         {
@@ -43,14 +43,13 @@ namespace AutoFactBot.Data.Repositories
 
         public async Task<Guid> CreateDocument(DocumentModel document)
         {
-            long userId = 23452;
-            var userExists = _dbContext.Users.FirstOrDefault(u => u.Id == userId);
+            var userExists = _dbContext.Users.FirstOrDefault(u => u.Id == _userId);
 
             if (userExists == null)
             {
                 var userEntity = new UserEntity()
                 {
-                    Id = userId,
+                    Id = _userId,
                 };
 
                 await _dbContext.AddAsync(userEntity);
@@ -71,7 +70,7 @@ namespace AutoFactBot.Data.Repositories
                 Color           = document.Color,
                 CountKeys       = document.CountKeys,
                 Interior        = document.Interior,
-                UserId          = userId
+                UserId          = _userId
             };
 
             await _dbContext.AddAsync(documentEntity);
