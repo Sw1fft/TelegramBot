@@ -31,3 +31,31 @@ body {
     text-wrap: balance;
   }
 }
+
+h2 {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 30px 0px 7px 0px;
+}
+
+h3 {
+  font-weight: 600;
+}
+
+.input-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.chapter-block {
+  padding: 5px;
+  border-radius: 8px;
+  border-width: 1px;
+}
+
+.diagnostic-block {
+  padding-top: 20px;
+}

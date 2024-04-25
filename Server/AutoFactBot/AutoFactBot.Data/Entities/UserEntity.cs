@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AutoFactBot.Data.Entities
+﻿namespace AutoFactBot.Data.Entities
 {
     public class UserEntity
     {
