@@ -21,7 +21,7 @@ namespace AutoFactBot.Application.Services
             using var scope = _serviceProvider.CreateScope();
             var botClient = scope.ServiceProvider.GetRequiredService<ITelegramBotClient>();
 
-            var hook = $"{_configuration["Url"]}api";
+            var hook = $"{_configuration["Url"]}/api";
 
             await botClient.SetWebhookAsync(hook, cancellationToken: cancellationToken);
         }

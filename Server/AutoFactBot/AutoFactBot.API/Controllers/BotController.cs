@@ -1,4 +1,4 @@
-﻿using AutoFactBot.Core.Abstractions;
+﻿using AutoFactBot.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 using Telegram.Bot.Types;
 
@@ -8,17 +8,13 @@ namespace AutoFactBot.API.Controllers
     [Route("[controller]")]
     public class BotController : ControllerBase
     {
-        private readonly IBotsService _botsService;
-
-        public BotController(IBotsService botsService)
-        {
-            _botsService = botsService;
-        }
-
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Update update, CancellationToken cancellationToken)
+        public async Task<ActionResult> Post(
+            [FromBody] Update update,
+            [FromServices] BotsService botsService,
+            CancellationToken cancellationToken)
         {
-            await _botsService.UpdatesHandler(update, cancellationToken);
+            await botsService.UpdatesHandler(update, cancellationToken);
 
             return Ok();
         }
