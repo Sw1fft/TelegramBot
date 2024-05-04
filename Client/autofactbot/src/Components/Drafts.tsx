@@ -9,7 +9,7 @@ export const Drafts = ({documents}: Props) => {
         <div>
             {documents.map((doc: Document) => (
                 <Card key={doc.id} title={doc.title} bordered={false} className="m-3">
-                    <p>Card test</p>
+                    <p>Документ</p>
                     <div>
                         <Button>Удалить</Button>
                         <Button>Редактировать</Button>
