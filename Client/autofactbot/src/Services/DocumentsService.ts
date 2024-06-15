@@ -1,4 +1,4 @@
-import { DocumentRequest } from "@/Contracts/Request";
+import { DocumentRequest } from "@/contracts/Request";
 
 export const GetAllDocuments = async() => {
     const response = await fetch("http://localhost:5000/Document");

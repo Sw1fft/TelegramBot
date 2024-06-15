@@ -1,5 +1,5 @@
-import { GetAllDocuments } from "@/Services/DocumentsService";
-import { Drafts } from "@/Components/Drafts";
+import { GetAllDocuments } from "@/services/DocumentsService";
+import { Drafts } from "@/components/Drafts";
 import { useEffect, useState } from "react";
 
 export default function DraftPage() {

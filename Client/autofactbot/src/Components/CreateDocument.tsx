@@ -1,4 +1,4 @@
-import { DocumentRequest } from "@/Contracts/Request";
+import { DocumentRequest } from "@/contracts/Request";
 import { useEffect, useState } from "react";
 import { Checkbox, Input, Modal, Select } from "antd";
 
